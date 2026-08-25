@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>AVAP-OS</title>
+</head>
+<body>
+
+    <div id="top-bar">
+        <div class="top-bar-left">
+            <span id="brand">AVAP-OS</span>
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">View</span>
+        </div>
+        <div class="top-bar-right">
+            <span id="time"></span>
+            <button id="welcomeopen" class="btn">About</button>
+        </div>
+    </div>
+
+    <div id="welcome" class="window">
+        <div id="welcomeheader" class="window-header">
+            <div class="window-controls">
+                <span class="control close" id="welcomeclose"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <span class="window-title">Welcome</span>
+        </div>
+        <div class="window-content">
+            <h1>Welcome to AVAP-OS</h1>
+            <p>This is a custom web operating system made for stardance program</p>
+        </div>
+    </div>
+
+    <div id="notes" class="window hidden">
+        <div id="notesheader" class="window-header">
+            <div class="window-controls">
+                <span class="control close" id="notesclose"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <span class="window-title">AVAPnotes</span>
+        </div>
+        <div class="window-content notes-layout">
+            <div id="sidebar" class="sidebar"></div>
+            <div id="note-body" class="note-body"></div>
+        </div>
+    </div>
+
+    <div id="photo" class="window hidden">
+        <div id="photoheader" class="window-header">
+            <div class="window-controls">
+                <span class="control close" id="photoclose"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <span class="window-title">motivation</span>
+        </div>
+        <div class="window-content">
+           <pre> <p>this is about motivation
+            .....................................
+            If you can dream it, you can do it. - Walt Disney
+           </pre>
+            </p>
+        </div>
+    </div>
+
+    <main id="desktopApps">
+        <div class="desktop-shortcut" id="notesIcon">
+            <img src="./notes.jpg" alt="Notes Shortcut" class="desktop-icon-img">
+            <span class="desktop-icon-label">AVAPnotes</span>
+        </div>
+        <div class="desktop-shortcut" id="photoIcon">
+            <img src="./life.jpg" alt="Photo Shortcut" class="desktop-icon-img">
+            <span class="desktop-icon-label">Life.png</span>
+        </div>
+    </main>
+
+    <div id="dock" class="dock">
+        <div class="app-icon" id="dock-notes" title="AVAPnotes">
+            <img src="./notes.jpg" alt="Notes App Icon" class="icon-img">
+            <span class="app-label">Notes</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

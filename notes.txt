@@ -1,0 +1,986 @@
+You'll be adding your outlining your window, creating your desktop, and adding a top bar.
+
+While we will be writing JavaScript, all code will still remain in the HTML file (until next time on WebOS Jams)
+
+Outline:
+
+Defining Our “Window”
+Making Our Desktop (+ finding the coolest desktop images)
+Topping off with a Top Bar (+ letting time tell)
+Defining the "Window"
+Alrighty, so you ended off last time with the start of your welcome screen. Hopefully, it looks nothing like mine. As a reminder, here's what mine looked like:
+
+What is a window?
+A window is a box that defines where an application on your user interface (UI) starts and ends. I suppose a div could be any shape (if you want your windows to be circles, go for it!).
+
+As web developers, we refer to groupings/boxes as divs. You can create divs inside of divs if, for example, you had a bento box, that box itself is a group and then each little section within that group is a group.
+
+The walls inside the box define where the content (tasty food) starts & ends & the walls along the edge of the box define where the box begins & ends.
+
+Bento Box of Divs
+
+Why do we need a window?
+Having multiple windows will allow you to make users feel in control of their experience (by choosing which windows to open and focus on and which to ignore) and provide a novel/fun experience.
+
+We need to create a div to group together the content of your window to define where your window begins and where it ends.
+
+Creating our Window
+Let's group all of our content within a div tag.
+
+That should look something like...
+
+
+    <body>
+        <div>
+            (the content of your site)
+        </div>
+    </body>
+Cool... well you're site hopefully looks the same & you may be thinking you did something wrong.
+
+grouped in a div
+
+Fear not, you're on the right path. The group has no style attributes that would make it visually distinct from the rest of the page yet.
+
+Outlining our Window
+Alrighty, let's apply a style on our div (yeah... you can apply styles to divs)
+
+
+    <div style="border: solid;">
+        (content)
+    </div>
+Simple! Now we can see that we outlined our content.
+
+stroke added
+
+Hey... wanna have some fun? Visit this site of border styles and try adding some cool border effects (+ also your own width and color)
+
+Finding our Boundary
+We can set the width and height of our box (div) using the style property.
+
+At the moment our box is taking up the width of the entire site!
+
+Let's change it to a fixed width.
+
+
+    <div style="border: solid; width: 128px;">
+        (content)
+    </div>
+I chose 128 pixels, but you choose whatever size you'd like. If you'd like to be REALLY NIFTY you can also do <div style="width: fit-content"> which will make the div fit the width of your content.
+
+Also, remember how last time how we rounded the corners of our image using border-radius? Try rounding the corners of your div:
+
+<div style="border: solid; width: 128px; border-radius: 16px">
+
+I chose 16px, but you can also make it much rounder by increasing that number! Experiment with it!
+
+image of it without space
+
+AHH THE TEXT IS VERY CLAUSTROPHOBIC. YOU PUT IT IN A BOX AND IT HAS NOOOO BREATHING ROOM!
+
+ADD PADDING FASTTTT
+
+
+    <div style="padding: 16px; (additional styles)">
+        (content)
+    </div>
+ah... that feels much better...
+
+(p.s. don't do 16px padding, do what feels right to you)
+
+Placing our Window
+We have a screen and we have an element (our window). We want to place our element on top of our window and specify where we want it to be on the screen.
+
+Because our window is going to exist on top of our desktop we need to use position absolute (which means that the position will not be relative to other items, but rather relative to the screen).
+
+You don't totally need to understand position absolute right now. As we go deeper into the batch, it will start to make more sense.
+
+
+    <div style="position: absolute; (additional styles)">
+        (content)
+    </div>
+Awesome and with the position: absolute property, we unlock four more properties (top, bottom, left, right). Each one defines the distance that our window will be from the edges of the screen.
+
+To place it in the center, we can simply write
+
+
+    <div style="position: absolute; top: 50%; left: 50%; (additional styles)">
+        (content)
+    </div>
+Hmm.. well that doesn't look quite right. The reason why is that the top, left, bottom, and right properties define how far the top left corner of our window is from the walls of our browser. To fix this, let's adjust the window so that the center of the window is the point that we're positioning around by using the transform: translate(-50%, -50%) property.
+
+
+    <div style="position: absolute; top: 50%; left: 50%; 
+transform: translate(-50%, -50%); (additional styles)">
+        (content)
+    </div>
+Alrighty great this is looking lovely.
+
+This may be a good time to take a stretch break. You've been doing a lot of coding & your site is looking beautiful!
+
+Designing Our Desktop
+You're back. You're refreshed. Maybe you even ate a strawberry or two (or maybe a whole package of strawberries).
+
+Adding The Desktop Background
+Adding the background is surprisingly easy!
+
+Find your image (I'll be using a photo I took in Michigan)
+Drag it into the Codespaces file explorer
+On your body tag as the style property of background-image: url(./NAME_OF_YOUR_IMAGE.png)
+Adding background-size: cover; to the body to make the size of the image fit the screen.
+If your image still isn't quite fitting, add height: 100vh as a property to your body. This will make the height of the background 100% of the vertical height of your browser.
+(optional bonus challenge, try using a gif instead of a png)
+
+Separating the Window from the Desktop
+Alright well, this is looking beautiful!
+
+Let's add a background color to our window so it looks visually distinct from the desktop.
+
+Creating Our Top Bar
+A top bar is generally used to display the name of the OS, key functions of a selected application, and the time. You can choose to display all or none of these pieces of information. You may also decide to give it different functions!
+
+I'll show you how you can add the name of the OS and the time. You can do whatever you want with it though!
+
+Creating the Foundation
+Alright, let's start by just making a div (a group) to contain our top bar.
+
+
+<div>
+
+</div>
+Horizontally Aligning The Elements
+Now... let's add some text and make the text horizontally aligned (by using display: flex which by default places text into columns)
+
+
+    <div style="display: flex;">
+        <p>
+            ThomasOS
+        </p> 
+        <p>
+            6/21/2023 3:41 PM
+        </p>
+    </div>
+Note: Aye... I heard you want to master Flex. Is that right? If so, I CHALLENGE YOU (yes you) TO TAKE ON THE ULTIMATE FLEXBOX FROGGY CHALLENGE (basically tap this link and play a super fun game to learn about flex)
+
+Customizing the Spacing
+We can optionally space out the content by applying justify-content (check out this justify-content testing site to see how you can use justify-content to space out content)
+
+based on this demo, I decided I want to use space-between in the example below, but I encourage you to check out the testing site and pick what justify-content style works best for your design!
+
+
+    <div style="display: flex; justify-content: space-between">
+        (content)
+    </div>
+Translucent Background
+Now you can also add a semi-transparent background to your top bar by using RGBA. Try adding
+
+RGBA stands for Red, Green, Blue, Alpha where Alpha is the level of transparency (0 being fully transparent and 1 being no-transparency or opaque). You can also google RGB color picker and then manually write the transparency from 0 to 1.
+
+Here's an example.
+
+
+  <div
+    style="position: absolute; width: 100%; display: flex; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0, 0.25); color: #fff; justify-content: space-between;">
+    <p style="margin-left: 16px;">
+      ThomasOS
+    </p>
+    <p style="margin-right: 16px;">
+      6/21/2023 3:41 PM
+    </p>
+  </div>
+Note: You'll also notice I threw in a backdrop-filter to blur the background. You can do that too!
+
+Note: Please don't just copy this. Make it your own and make it look interesting in your visual aesthetic. This Jam is an absolute waste of your time if you're not experimenting and having fun while doing it. This isn't homework, this is your freedom, this is your art, this is your life! Enjoy it!
+
+Personalize It
+At this point, you don't need your hand held. Let's take off the training wheels and try making it look cool in your own way.
+
+Here's how I decided to make mine look
+
+I hope yours looks totally different! Here's my code in case you want to take some inspiration from it. (but again, DON'T MAKE AN EXACT STYLE COPY)
+
+Expand
+  <div
+    style="position: absolute; width: 100%; display: flex; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0, 0.125); color: #fff; justify-content: space-between; gap: 32px;">
+        <p
+          style="margin-left: 16px; font-weight: 700; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
+            ThomasOS
+        </p>
+        <p style="margin-left: 16px; background-color: rgba(256, 256, 256, 0.25); padding: 4px 12px; border-radius: 16px;">
+            ☀️ Always Learning ☁️
+        </p>
+        <p
+          style="margin-right: 16px; background-color: rgba(256, 256, 256, 0.125); padding: 4px 12px; border-radius: 16px;">
+            6/21/2023 3:41 PM
+        </p>
+  </div>
+Ideas to spice it up:
+
+Try different putting different content in the top bar
+Try a different color
+Try including more or fewer elements
+Include an image in your nav
+Make it a bottom bar! (using the absolute positioning and the bottom property instead of the top property)
+Tracking The Time
+I promised you JavaScript, so of course I am going to give you JavaScript.
+
+JavaScript brings logic to your website. It's how your OS will respond to events (whether those be user events or events like the changing of time).
+
+We can write JavaScript in its own file, or we can just write in the HTML file inside of a <script> tag. We're going to start inside the HTML file.
+
+Where Do I Write JavaScript?
+You can include your script tag in the HTML file.
+
+
+<html>
+    <body>
+        (site content)
+        <script>
+            (JavaScript Code)
+        </script>
+    </body>
+</html>
+At the moment we're going to be writing our code inside of our HTML file. We're not touching the script.js file yet (until next Jam)
+
+How Do I Get the Time?
+Let's begin by getting the time and storing it in a variable.
+
+
+<script>
+    var currentTime = new Date().toLocaleString();
+</script>
+Alright, let's break this down.
+
+The var keyword indicates that we're creating a variable.
+
+currentTime is the name of the variable that we're creating. We could've given this variable any name (I encourage you to try naming it something else, just for fun).
+
+new Date().toLocaleString(); is a browser function that gets the current date and formats it into plain text (what we hackers call a String).
+
+Note: You don't need to know new Date().toLocaleString, you only need to know how to google "How do I get the current date as a String in JavaScript"
+
+How Do I Display the Time?
+We have a value in JavaScript and we want to put it inside of our HTML text.
+
+Here's how we go about doing that.
+
+Mark the text we'd like to alter
+Let's add an "id" to the time text so we can select it. Here's how that might look:
+
+
+    <p id="timeElement"
+      style="(YOUR STYLES)">
+      Time
+    </p>
+Select it in JavaScript
+We can use a querySelector to select the element and store it in a variable. We pass into the querySelector the id of the element we're working with:
+
+
+<script>
+    var currentTime = new Date().toLocaleString();
+    var timeText = document.querySelector("#timeElement");
+</script>
+Note: We placed a # in front of the id name to indicate it is an id
+
+Alter The Selected Element In JavaScript
+Finally, we can set the innerHTML (the peanut butter in the bagel sandwich) and change the value (perhaps to cream cheese).
+
+
+<script>
+    var currentTime = new Date().toLocaleString();
+    var timeText = document.querySelector("#timeElement");
+    timeText.innerHTML = currentTime
+</script>
+Boom, now we get the current time, but don't be too quick to celebrate. You'll notice the time doesn't update. This is because the code inside the script tag only runs a single time (when the page is first opened).
+
+We need it to run every second.
+
+Make it run every second
+We can use the setInterval function to make the code repeat every 1000 milliseconds (every second).
+
+Here's how we can go about doing that
+
+
+  <script>
+
+    function updateTime() {
+        var currentTime = new Date().toLocaleString();
+        var timeText = document.querySelector("#timeElement");
+        timeText.innerHTML = currentTime;
+    }
+    setInterval(updateTime, 1000);
+
+  </script>
+I placed our previous code into a function (think of a function as an operation that we're telling the machine to run) and put that function inside of a setInterval (think of this as a robot that does the function every set amount of time).
+
+These five lines of code are very readable, but what if I told you there was a way to do it in just 3 lines line.
+
+Try updating the time every second in just three lines and then check the solution below
+
+Solution
+
+setInterval(function () {
+  document.querySelector("#timeElement").innerHTML = new Date().toLocaleString();
+}, 1000);
+
+Edit on GitHub
+batch
+/
+webOS
+/
+part-3
+Previous3/5Next
+Web30 Min
+Make Your Window Draggable, Closable, and Openable
+SerenityUX's GitHub avatar
+SerenityUX
+Surpassed my expectations, young one, you have. Confront your fears, you must, for a Jedi JavaScript master you have the potential to become.
+
+Today we're going to be making our windows movable and throwing in some JavaScript magic (you'll see later what I mean by this). Here's what that looks like:
+Outline:
+
+Adding App to Desktop
+Making App Icon Tappable
+Making our App Window
+Making Our First App
+Additional Challenges
+Adding App to Desktop
+Alrighty, so let's go into our body tag and create a div beneath the menu bar (hey, pro tip btw, you can collapse your divs to make your code more readable for cases like this by tapping the dropdown button next to the code line number of a div)
+
+
+  <div id="desktopApps" style="padding-top: 64px; padding-left: 16px;">
+    <p>Name Of Your App</p>
+  </div>
+Note: I added some padding on the top and left to give the application icons some breathing room and to make sure it was not covered by the top-bar.
+
+Here's what my code looks like
+
+Expand
+<body style="font-family: Noto Sans, system-ui, sans-serif; height: 100vh; background-image: url(./beautifulImage.png); background-size: cover; background-repeat: no-repeat; margin: 0px;">
+	<div class="window" id="welcome" style="top: calc(50% - 90px); left: calc(50% - 180px);">
+		(window content)
+	</div>
+	<div style="position: absolute; window: 100%; display: flex; backdrop-filter: blur(10px); background-color: rgba(0, 0, 0, 0.125); color: #fff; justify-content: space-between; gap: 32px;">
+		(topbar content)
+	</div>
+	<div id="desktopApps" style="padding-top: 64px; padding-left: 16px;">
+		<p>Hacker Notes</p>
+	</div>
+</body>
+Add Your Icon
+Create an Icon
+My app is going to be called Hacker Notes.
+
+Note: Want to also name your app Hacker Notes? Ha, no you cannot because you're not doing a workshop, you're doing a JAM and JAMS require that you do-ya-own-thing™.
+
+I took a photo of a friend's notebook (note from Thomas's "friend", Sahiti: "WHY MY NOTEBOOK?!") to use as the icon for the app.
+
+notebook image
+
+Take your own image that fits your app and send it to your computer using email or AirDrop and then drag it into the Codespaces file explorer (just as we did for the background). Make sure the file format is .png or .jpg (otherwise find an online file converter).
+
+You can also you can icon you create or find online. I really don't mind, this is your operating system after all and you're the chief designing, so you make the call pal.
+
+Use Your Icon
+Create an image tag, and apply some styles of your choice! I customized the width, height, border-radius, and added a drop-shadow.
+
+It's also probably a good idea to wrap your icon in a div so we can later tap on that icon to open the window.
+
+Here's what my code looks like:
+
+
+  <div id="desktopApps" style="padding-top: 64px;">
+    <div style="text-align: center; padding: 16px; filter: drop-shadow(0 0 8px black); width: fit-content">
+      <img src="./notebook.png" style="width: 64px; height: 64px; border-radius: 16px;">
+      <p style="margin: 0px; color: #fff; ">Notes</p>
+    </div>
+  </div>
+Note: PLEASE DO NOT COPY THIS CODE! Do your own app and style your icon in your own way. Want to make all the icons circles, go for it (increase that border-radius)!
+
+Here's what my icon is currently looking like inside my application
+
+Currently when we tap on the icon... nothing happens. Let's select the icon when we tap on it!
+
+Making App Icon Tappable
+Alright let's break this into parts.
+
+Store what icon is selected
+We need a way to communicate to the user whether the icon is selected or not selected
+We need a way to change the icon's appearance to show that it is selected
+We also need a way to change the appearance when deselected (tapped that second time)
+Store the State of the Selected Icon
+Let's begin by storing what the selected icon is (by default, this will be undefined because there is no selected icon).
+
+For that we will use a... you guessed it... variable
+
+
+var selectedIcon = undefined
+(p.s. this is JavaScript code, so it's in our JavaScript file)
+
+Lovely, now let's make a function for changing the visual appearance of the icon. I challenge you to give it some thought & think hmmm "how can I change the style of an icon without using in-line styles".
+
+Solution
+Communicate whether an icon is selected
+We're going to this using classes!
+
+Let's make a class for a selected icon. For testing purposes, you can go ahead and add the class to your icon div like so:
+
+
+<div class="selected" styles="(styles)">
+	(content)
+</div>
+Here's what I added in my css file. Please DON'T TAKE THIS CODE. Communicate that it is selected in your own way. This may be through a curvy underline, a rounding of the corners, a green background, etc whatever you'd like!
+
+Programmatically Adding/Removing a Class
+Poke around this geeksforgeeks site on classes and see if you can programmatically add a class to an element
+
+Solution
+Let's go ahead and add some style properties for when the icon is selected.
+
+
+function selectIcon(element) {
+  element.classList.add("selected");
+  selectedIcon = element
+} 
+& now try implementing a function for deselecting an icon
+
+Solution for Deselecting Icon function
+When I first introduced JavaScript, I described it as the logic of your program.
+
+I think we've already worked with if else statements, but just in case you were lost, here's a brief introduction.
+
+If else statements check if a certain condition is true in which case a certain block of code runs & if that condition is not true a different block of code runs.
+
+Try to write an if-then statement inside a handleIconTap function that selects the item if it's not selected, but deselects it if it is already selected.
+
+Your code may look a little like this:
+
+
+function handleIconTap(element) {
+  if (condition) {
+    functionA(element)
+  } else {
+    functionB(element)
+  }
+}
+Hint: element.classList.contains("selected") exists and returns a Boolean value (either True or False)
+
+Solution Handling Icon Tap
+Making our App Window
+Copying & customizing the old window
+We can basically copy the code from our other window and remove the content.
+
+Once we copy that code, change the id to "theNameOfYourApp" (actually make it the name of your app). Then inside the div that contains the content of your app, you may want to adjust the height and width. You can also change the header text.
+
+Here's what my code looks like (keep in mind if you copy this code it will probably break your site because it should have significantly different styling than what is here)
+
+(don't copy)
+
+Expand
+  <div class="window" id="notes" style="top: calc(50% - 240px); left: calc(50% - 260px); ">
+    <div class="windowheader" id="notesheader">
+      <div class="closebutton" id="notesclose">
+      </div>
+
+      <p class="headertext">Notes</p>
+      <div style="width: 16px; margin-right: 6x; height: 16px;"></div>
+    </div>
+    <div style="background-color: #fff; margin: 6px; border-radius: 12px; width: 520px; height: 480px; padding: 16px;">
+      <p>Hacker Notes</p>
+    </div>
+  </div>
+
+Making our App Draggable
+Also make sure to run in your script.js file the code
+
+
+dragElement(document.querySelector("#notes"))
+just as you did with your other window.
+
+Boommmm, we have our second window!
+
+Now we're able to move it around, but we cannot yet close it.
+
+Making our App Closable
+Let's look at the code we implemented for the welcome screen
+
+
+var welcomeScreen = document.querySelector("#welcome")
+
+var notesScreenClose = document.querySelector("#welcomeclose")
+
+notesScreenClose.addEventListener("click", () => closeWindow(welcomeScreen));
+Now try editing your HTML code id (for the close button) and write a new set of code for making this screen closable
+
+Solution For Closing The Window
+Soo... this is quite annoying... repeating code that is...
+
+When you repeat code, that's a good sign you should make it a function. Try turning it into a function and calling said function
+
+Solution For Closable Window Function
+Making Our Window Closed By Default
+This is quite simple! Just add the display: none; style property inline to your notes div.
+
+Making our Rise To The Top
+You'll notice on that last gif that when we tap on the notes window, it doesn't rise on top of the welcome screen.
+
+When we tap on a window, we should make it rise to the top. We can do this using the z-index style property.
+
+If you're feeling quite confident, try implementing this feature on your own! Otherwise, go through the notes below
+
+Defining the largest index
+We need to store the largest index so we can know what value we need to set the tapped on window to. We want the window we tap on to have an index greater than the one previously tapped on.
+
+
+var biggestIndex = 1;
+I initialized it at 1. You can initialize the variable at any value you'd like to initialize it at.
+
+Checking for a Tap on the window
+We need a function to make the window listen for the user to click on it (we call this "mousedown"). When the user taps on the window, we then run the will run some block of code (handleWindowTap) to move it to the top
+
+
+function addWindowTapHandling(element) {
+  element.addEventListener("mousedown", () =>
+    handleWindowTap(element)
+  )
+}
+Remember to call the addWindowTapHandling for each of your elements (so for example addWindowTapHandling(welcomeScreen) and addWindowTapHandling(notesScreen)
+
+Making the Window to the Top On Move on Tap
+We're now lifting the window up to the top by incrementing the biggestIndex and setting the zIndex to that new biggestIndex
+
+
+function handleWindowTap(element) {
+  biggestIndex++;  // Increment biggestIndex by 1
+  element.style.zIndex = biggestIndex;
+}
+Making Window Move To Top On Open
+Awesome, we want to make it so when we open the window, it moves straight to the top immediately.
+
+
+function openWindow(element) {
+  element.style.display = "flex";
+  biggestIndex++;  // Increment biggestIndex by 1
+  element.style.zIndex = biggestIndex;
+}
+Protecting The Top Bar
+An issue we encounter is that eventually the window goes on top of the topBar. To counter that, let's identify the top bar and then increment it's value each time we increment the window
+
+
+<div id="top"
+    style="(styles)">
+</div
+(in HTML)
+
+Expand
+var topBar = document.querySelector("#top")
+
+function openWindow(element) {
+  element.style.display = "flex";
+  biggestIndex++;  // Increment biggestIndex by 1
+  element.style.zIndex = biggestIndex;
+  topBar.style.zIndex = biggestIndex + 1;
+}
+
+function handleWindowTap(element) {
+  biggestIndex++;  // Increment biggestIndex by 1
+  element.style.zIndex = biggestIndex;
+  topBar.style.zIndex = biggestIndex + 1;
+  deselectIcon(selectedIcon)
+}
+(in JavaScript)
+
+Celebrate it works
+Awesome! Now we're able to tap on our windows and see them ov
+
+Putting All Of This Into One Function to Initialize a Window
+We're writing a bunch of functions to initialize the window, I challenge you to try putting it all into one window. This isn't necessary, but it will just be helpful later on.
+
+Solution
+Calling Our Function
+Make sure you call the function you create to ensure your window functions properly initializeWindow("notes")
+
+Making Our First App
+The time has come young one. You're going to make the first app for your OS. It's going to be a text-based app about whatever you'd like. Mine will be my "Hacker Notes," but maybe yours will be your "Hiking Notes" or your "Favorite Recipes," or your "Random Inspirational Quotes."
+
+It's totally up to you. There's only one app you cannot make (& that is Hacker Notes). You need to do your ownnnn thinggg my friend! Don't be a follower, be a leader!!!
+
+Making Initial View
+The initial view for my site will be introducing the concept of Hacker Notes. If you would like, you can make an initial view that represents your site well. I changed the font, added some text, and just generally had fun with it. I encourage you to do the same (& add your own unique style with images, awesome styles, etc).
+
+Adding Content Selection
+Having one piece of content on your app is sort of boring. We should make it so the user can select between multiple pieces of content.
+
+Creating a side bar, bottom bar, top bar, or whatever you'd like
+You need a space to store your content selection options. I put this in a side bar. You can put this in whatever you'd like.
+
+I encourage you to create something other than a sidebar to display your content selection options. Get creative, and be unique.
+
+Here are the steps I took to create this sidebar.
+
+Wrapped my text content inside of a div
+Created a div inside of the window content div
+Made the window content div use display: flex; and flex-direction: row;
+Added some padding and some margin
+Styled the sidebar to make it look nice and added the first entry (with a name and date)
+If you're stuck and want to see my code, take a look (but please don't copy and paste)
+
+Expand
+  <div class="window" id="notes" style="top: calc(50% - 240px); display: none; left: calc(50% - 260px); ">
+    <div class="windowheader" id="notesheader">
+      <div class="closebutton" id="notesclose">
+      </div>
+
+      <p class="headertext">Notes</p>
+      <div style="width: 16px; margin-right: 6x; height: 16px;"></div>
+    </div>
+    <div
+      style="background-color: #fff; margin: 6px; border-radius: 12px; width: 520px; height: 480px; padding: 16px; font-family: Courier; display: flex;">
+      <div style="background-color: #F9F9F9; width: 520px; margin-right: 16px; padding: 16px; border-radius: 16px;">
+        <p style="margin: 0px;">Welcome</p>
+        <p style="font-size: 12px; margin: 0px;">06/28/2023</p>
+      </div>
+
+      <div style="overflow-y: scroll;">
+        <p contenteditable="True">
+          <span contenteditable="true">Welcome to <strong>Hacker Notes</strong>
+            </br>
+            </br>
+            <img src=""
+              style="width: 96px; border-radius: 16px" />
+            </br>
+            </br>
+
+            This is a place where I store my thoughts as they come to mind. What exactly will you find when browsing
+            through
+            these notes? As I <del>once said</del> <ins>always say</ins>
+          </span>
+        <blockquote
+          style="background-color: #F9F9F9; margin-top: 16x; margin-bottom: 16px; margin-left: 0px; margin-right: 0px; padding: 16px; border-radius: 16px;"
+          contenteditable="true">
+          <i>Time Will Tell
+            </br>
+            ~ Thomas
+          </i>
+        </blockquote>
+        <span contenteditable="true">
+          I suppose you may see a bit of content about technology. Perhaps some insights regarding recent projects.
+          Maybe
+          even some thoughts regarding nature & tea? Go and find out!
+        </span>
+        </p>
+      </div>
+    </div>
+  </div>
+Storing Our Content in JS
+We're going to be storing our content in a JavaScript array of objects. What data you'll have inside of each object will vary depending on what you're making.
+
+For example, your objects may have a property of music if your app will display different songs for piece of content selected.
+
+An object is a collection of properties (or smaller pieces of data)
+
+
+{
+	title: "Welcome",
+	date: "06/28/2023",
+	content: `(a bunch of html content in my case)`
+}
+title for example is a property and "Welcome" is the value of that property.
+
+Note: I used `` instead of " " to ensure that the quotations inside of my html code would not prematurely end the string
+
+Storing our content
+We don't want to hard code the content, rather we want the content to be programmatically added to the screen so we can easily change it.
+
+Let's begin by commenting out our HTML code and pasting it into our Java Script object. We'll have an object for each post.
+
+Expand
+var content = [
+  {
+    title: "Welcome",
+    date: "06/28/2023",
+    content: `
+              <p contenteditable="True">
+          <span contenteditable="true">Welcome to <strong>Hacker Notes</strong>
+            </br>
+            </br>
+            <img src=""
+              style="width: 96px; border-radius: 16px" />
+            </br>
+            </br>
+
+            This is a place where I store my thoughts as they come to mind. What exactly will you find when browsing
+            through
+            these notes? As I <del>once said</del> <ins>always say</ins>
+          </span>
+        <blockquote
+          style="background-color: #F9F9F9; margin-top: 16x; margin-bottom: 16px; margin-left: 0px; margin-right: 0px; padding: 16px; border-radius: 16px;"
+          contenteditable="true">
+          <i>Time Will Tell
+            </br>
+            ~ Thomas
+          </i>
+        </blockquote>
+        <span contenteditable="true">
+          I suppose you may see a bit of content about technology. Perhaps some insights regarding recent projects.
+          Maybe
+          even some thoughts regarding nature & tea? Go and find out!
+        </span>
+        </p>
+      `
+  }
+]
+(p.s. we're creating an object which is a group of properties and placing that object in an array which is a list of values)
+
+When we refresh the page, our notes page should now have no content.
+
+Programmatically displaying our content
+Let's make a function for setting the content.
+
+We need to 1) get where we are placing the content (and make that place identifiable), 2) get the content, and then 3) place the content where it needs to go.
+
+Try implementing it on your own, and if you get lost check the solution below:
+
+Solution (keep in mind I added an id onto the div where the note content goes)
+Programmatically Populating our content selector
+Currently our content selector is hard coded, but we want this to be dynamic so that it can respond to additional notes being added to the array.
+
+Let's take all of the content out of our sidebar in HTML (because we no longer need to hard code it in)
+
+We need to create a function that accepts the parameter of index (we can use the index of the item to identify it because the index (its spot in the array) is unique)
+
+
+function addToSideBar(index) {
+	(code goes here)
+}
+Try implementing it on your own, and if you get stuck consult the help below.
+
+We need to get the div where we are placing the content by placing an id on it and then storing it using a querySelector
+var sidebar = document.querySelector("#sidebar");
+
+We then need to get the note content from our index
+var note = content[index];
+
+note: index is being given to use by our for loop and we're using that index to select the piece of content
+
+We then need to create a new div using the document.createElement function and pass it in the element type of "div" (where we'll be storing our listening inside of)
+var newDiv = document.createElement("div");
+
+We need to set the content of this new div we created using the innerHTML property
+
+  newDiv.innerHTML = `
+    <p style="margin: 0px;">
+      ${note.title}
+    </p>
+    <p style="font-size: 12px; margin: 0px;">
+      ${note.date}
+    </p>
+  `;
+We need to add an event listener to check if it has been tapped (& in which case we'll programmatically set the content)
+
+newDiv.addEventListener("click", function() {
+    setNotesContent(index);
+  });
+& last but not least we need to append it to our div
+
+  sidebar.appendChild(newDiv);
+& then finally we need to loop through the function to ensure it is done for every object in the array
+
+for (let i = 0; i < content.length; i++) {
+  addToSideBar(i)
+}
+(a for loop runs a segment of code a given number of times and passes in a number that increments each time the code segment runs)
+
+Woooo, it's working!!!
+
+btw if you got confused, here's the complete set of code
+
+Creating Content to Select
+I am going to create a sample
+
+Creating content is now quite easy. It actually doesn't involve any code, you can just add it to the array of content & it just automagically works!
+
+Here's how I added to my array of objects (notice now there are two objects in the JavaScript array):
+
+Expand
+var content = [
+  {
+    title: "Welcome",
+    date: "06/28/2023",
+    content: `
+              <p contenteditable="True">
+          <span contenteditable="true">Welcome to <strong>Hacker Notes</strong>
+            </br>
+            </br>
+            <img src=""
+              style="width: 96px; border-radius: 16px" />
+            </br>
+            </br>
+
+            This is a place where I store my thoughts as they come to mind. What exactly will you find when browsing
+            through
+            these notes? As I <del>once said</del> <ins>always say</ins>
+          </span>
+        <blockquote
+          style="background-color: #F9F9F9; margin-top: 16x; margin-bottom: 16px; margin-left: 0px; margin-right: 0px; padding: 16px; border-radius: 16px;"
+          contenteditable="true">
+          <i>Time Will Tell
+            </br>
+            ~ Thomas
+          </i>
+        </blockquote>
+        <span contenteditable="true">
+          I suppose you may see a bit of content about technology. Perhaps some insights regarding recent projects.
+          Maybe
+          even some thoughts regarding nature & tea? Go and find out!
+        </span>
+        </p>
+      `
+  },
+    {
+    title: "Sample Text",
+    date: "06/28/2023",
+    content: `
+              <p contenteditable="True">
+          Here's some sample text
+        </p>
+      `
+  }
+]
+WAHOOOOOOOOOOOOO
+
+OUR FIRST APP IS COMPLETE EXCEPT HA NO IT'S NOT!
+
+You saw this coming...
+
+ADDITIONAL CHALLENGE TIMEEEEE
+
+Additional Challenges
+Pick some challenges that seem fun & add them to your App
+
+Add a really unique background color and color for your text
+Make the top bar of the application change depending on the notes currently open
+Make some awesome content for your site
+Fix the bug where the menu gets trapped in the top bar when you pull it up too far (either by limiting how far you can pull it up or by making it possible to click through the top bar)
+Celebrate
+I am so proud of you. I really did not think you would make it this far...
+Today you're going to be building an app for your personalOS and you'll be given pretty little guidance. YOU GET TO DECIDE THE CONTENT AND FEATURES FOR THIS APP. You're probably a bit nervous.
+
+Don't worry, I'll be riding alongside you. I also don't know what app I am going to build. Fear not young one, we'll figure it out together. Be brave. You've been so brave up to this point and I am so proud of what you've built. Here's what I built, but I assure you that your final product will be nothing like this:
+
+Make sure you have some paper! Let's do this!
+
+Outline:
+
+Ideation (figure out what we're going to build)
+Wireframe (make some sketches)
+Build Your App (build an awesome app for our OS)
+Ideation
+You finally get to create your own app. It could be an app to do whatever you'd like! Here are some ideas (but I encourage you to come up with your own ideas):
+
+Contact App (helps people get in contact w/ you)
+Projects App (shows all projects you've been)
+Map App (shows your life story on a map)
+Weather App (shows your local weather?)
+Brainstorming on Paper
+Let's begin by mind mapping on paper for ten minutes!
+
+What is Mind Mapping?
+A mind map is basically a visualization of a bunch of your ideas. It helps you be creative and explore ideas that would have otherwise never surfaced.
+
+A question/prompt in the center of the map will provide us with some degree of direction and ideas will radiate from the center of our sheet.
+
+I found this example for you by browsing the internet: image from an IDEO article about Mind Maps
+
+Your Mind Map doesn't have to be quite as big and crazy. Let's put in the center of our sheet of paper "What do I want people who visit my site to walk away knowing about me?."
+
+When an answer comes to mind, draw it around the circle and then connect it to the center. Write down as many ideas as possible
+
+Create a string of ideas & be sure to go for quantity over quality (no idea is too crazy for the mind map)
+
+& then go wild with it!
+
+(your answers should & will be quite different than mine, and that's good) (have fun with it)
+
+Here's a ten minute timer, good luck!
+
+Turning Brain Dump into Beautiful App
+You probably now have an idea in your mind for something you'd love to convey inside your site after making that Mind Map. You may also have an idea for what that app would look like (if not, take a moment to consider what you might build to achieve your desired effect on the user).
+
+I decided to try to create an image that contains almost every element of my life and then make it interactive so the user can tap on sections of the image to learn a bit more about me. Please make an app that is totally different! This app will be your App and should not look like my App.
+
+To begin, let's map out what a typical user experience will look like in terms of how they will flow through your App (this will vary depending on your App)
+
+Let's create a wireframe to flesh out our ideas a bit more.
+
+Wireframe
+A wireframe is sort of a sketch of your app. You can sketch however you'd like, but the way I do it is by drawing shapes (like rectangles, circles, etc) that represent text, images, etc.
+
+Sketches are really just for you, so do whatever you like. Just make sure you can draw them as fast as possible.
+
+I am also going to take a moment to ideate what items I would like to include in the image. This is a higher fidelity version of the initial wireframe.
+
+Because I am not currently at home (I am at a Cafe across from Hack Club HQ), I am going to work with a prototype image. This will also just make it much easier to build the first version & then scale from there.
+
+I hope your app is totally different. If your app requires a lot of content that you don't have, try making it placeholder content for the time being.
+
+Vision Secured
+Awesome, hopefully you have secured your vision for the application.
+
+Next up, we'll be making the app icon & window (but it will be fast because of the work we did in our last Jam).
+
+Creating App Icon
+If we copy our previous icon and paste it beneath the previous icon...
+
+wow, that was easy! Now we have our second icon on the screen!
+
+Let's customize it to the name & image of our app! (import an image you'd like to use as your icon) (feel free to steal an image off the internet or create your own beautiful icon (or anything in-between))
+
+
+    <div id="photoIcon"
+      style="text-align: center; margin: 8px; padding: 8px; filter: drop-shadow(0 0 8px black); width: fit-content; cursor: pointer;">
+      <img src="./photo.png" style="width: 64px; height: 64px; border-radius: 16px;">
+      <p style="margin: 0px; color: #fff; ">Life.png</p>
+    </div>
+Great, but now we're not able to tap on our icon! We need to initialize the icon.
+
+Here's our old code:
+
+
+var notesIcon = document.querySelector("#notesIcon")
+var notesScreen = document.querySelector("#notes")
+
+notesIcon.addEventListener("click", () => handleIconTap(notesIcon, notesScreen));
+
+Let's try turning it into a function so we do not have to rewrite this code for our new icon. I challenge you to give it a shot!
+
+Solution
+Now if you want to be really nifty, try making it so we initialize the window, we initialize the icon too
+
+(hint: it's only a 2-3 line change)
+
+Solution
+Creating Our App Window
+Before we can initialize the window, we actually need to create it. Let's copy the code from the welcome window and then just delete the content and change the id of the application to the name of this app.
+
+Expand
+
+  <div class="window" id="photo" style="top: calc(50% - 90px); left: calc(50% - 180px); display: none; ">
+    <div class="windowheader" id="photoheader">
+      <div class="closebutton" id="photoclose">
+      </div>
+
+      <p class="headertext">Photo</p>
+      <div style="width: 16px; margin-right: 6x; height: 16px;"></div>
+    </div>
+    <div style="background-color: #fff; margin: 6px; border-radius: 12px; width: 360px; padding: 16px;">
+      <p>Hello World</p>
+    </div>
+  </div>
+& then if in our javascript we call our initialize window function with our new app...
+
+
+initializeWindow("photo")
+BOOOYAHHHH, OUR SECOND WINDOW IS LIVEEEEEEEEEEEEE!!! WE'RE FULLY SETUP!
+
+Build Your App
+Okay now for the fun part... build your app. No hand holding here, you've built an app before and I know you can do it again. I encourage you to have fun & try to make an amazing app for your personalOS!
